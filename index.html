@@ -1,11 +1,28 @@
 <script>
+function r(s,f,w){return String(s).replaceAll(String(f),String(w))}
+
 function grn(rn){return Math.floor(Math.random()*rn)}
 
 while (true) {
 
     ds=`${grn(100)}${'+-*/'[grn(4)]}${grn(100)}`;
   
-  alert(`${prompt(ds)==eval(ds)}\n${eval(ds)}`);
+ds_=ds;
+
+
+if(ds.includes('*')){
+	
+ds_=[ds,`${r(r(r(r(r(r(r(r(r(r(ds.split('*')[0],'0','⁰'),'1','¹'),'2','²'),'3','³'),'4','⁴'),'5','⁵'),'6','⁶'),'7','⁷'),'8','⁸'),'9','⁹')}${ds.split('*')[1]}`][grn(2)]
+if(ds_!=ds){ds=Math.pow(ds.split('*')[1], ds.split('*')[0])}
+}else if(ds.includes('/')){
+	
+ds_=[ds,`√${ds.split('/')[0]}`][grn(2)]
+if(ds_!=ds){ds=Math.sqrt(ds_.replace('√',''))}
+}
+
+
+  alert(`${prompt(ds_)==eval(ds)}\n${eval(ds)}`);
 
 }
+
 </script>
